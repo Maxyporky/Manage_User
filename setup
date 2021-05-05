@@ -1,0 +1,55 @@
+#!/bin/bash
+BLUE='\e[96m'
+NC='\033[0m' # No Color
+BOLD='\e[1m'
+RED='\e[91m'
+
+function main_menu {
+clear
+figlet -f slant Menu principal	
+	printf "Created by \e[5mMarc Gayete\e[25m \n"
+	echo " "
+
+option=0
+until [ "$option" = "4" ]; do
+	echo "  1.) Gestió del usuaris del sistema"
+	echo "  2.) Operatives amb les sessions:"
+	echo " "
+	echo -e  "${BOLD}${BLUE}  999.) Sortir${NC}"
+	echo " "
+
+	echo -n "Tria una: "
+	read option
+	echo " "
+		case $option in
+		    1) 	
+				cd /home/$USER/Escritorio/Script/files
+				cd user
+				source ./sc_users.sh
+				title
+				gusers
+				;;
+		    2) 
+				echo " "
+				echo "----------------------------------------------"
+				echo -e "${BOLD}${RED}Under construction${NC}"
+				echo "----------------------------------------------"
+				echo " "
+				# cd function
+				# cd sessions
+				# source ./sc_sessions.sh
+				# title
+				# gusers
+				;;
+		    999) 
+				exit;;
+		    *)
+				main_menu 
+		esac
+done
+ }
+
+source ./menu.sh
+main_menu
+
+
